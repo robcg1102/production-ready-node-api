@@ -72,6 +72,7 @@ Client → Nginx (reverse proxy) → Express
 │   │   ├── rateLimiter.ts      # express-rate-limit config
 │   │   └── requestLogger.ts    # HTTP request logging
 │   ├── routes/
+│   │   ├── api.routes.ts       # /api endpoint
 │   │   ├── health.routes.ts    # /health/live endpoint
 │   │   ├── metric.routes.ts    # /metrics endpoint
 │   │   └── index.ts            # Route registration
@@ -164,6 +165,7 @@ npm run test:coverage # Run tests with coverage report
 |---|---|---|
 | `GET` | `/health/live` | Liveness check — returns 200 if the server is up |
 | `GET` | `/metrics` | Prometheus-compatible metrics |
+| `GET` | `/api` | API Routes |
 
 ---
 
