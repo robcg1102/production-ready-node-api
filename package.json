@@ -7,9 +7,9 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test": "npx cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "npx cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
+    "test:coverage": "npx cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "@types/pg": "^8.20.0",
     "@types/supertest": "^7.2.0",
     "@vitest/coverage-v8": "^4.1.6",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.4.2",
     "eslint": "^10.3.0",
     "jest": "^30.4.2",
