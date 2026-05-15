@@ -1,7 +1,7 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci && npm cache clean --force
+RUN npm ci --ignore-scripts && npm cache clean --force
 COPY . .
 RUN npx prisma generate
 RUN npm run build
@@ -11,7 +11,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY package*.json ./
 COPY --from=builder /app/prisma/schema.prisma ./prisma/schema.prisma
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+RUN npx prisma generate
 COPY --from=builder /app/dist ./dist
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
