@@ -8,8 +8,8 @@ import { apiLimiter } from "../middlewares/rateLimiter.js";
 
 
 export const registerRoutes = (app: Express): void => {
-
-    app.get("/", (_, res)=> {
+ 
+    app.get("/", (_, res )=> {
         return res.status(200).json({
             api: "OK"
         });
